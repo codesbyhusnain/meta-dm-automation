@@ -47,13 +47,18 @@ const Sidebar = ({ slug }: Props) => {
        backdrop--blur__safari
        backdrop-blur-3xl"
       >
-        <div className="flex gap-x-2 items-center p-5 justify-center">
-          <div className="font-bold">DMotion</div>
+        <div className="flex gap-x-2 items-center p-3">
+          <div className="flex items-center gap-x-2">
+            <div className="h-8 text-xs w-8 rounded-lg bg-white dark:bg-background flex items-center justify-center font-bold">
+              Dm
+            </div>
+            <span className="font-bold text-2xl ">DMotion</span>
+          </div>
         </div>
-        <div className="flex flex-col py-3">
+        <div className="flex flex-col">
           <Items page={page} slug={slug} />
         </div>
-        <div className="px-16">
+        <div>
           <Separator orientation="horizontal" className="bg-[#333336]" />
         </div>
         <div className="px-3 flex flex-col gap-y-5">

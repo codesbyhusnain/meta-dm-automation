@@ -4,6 +4,7 @@ import {
   RocketDuoToneWhite,
   SettingsDuoToneWhite,
 } from "@/icons";
+import { MegaphoneIcon } from "lucide-react";
 import { v4 as uuid } from "uuid";
 
 export type FieldProps = {
@@ -30,6 +31,11 @@ export const SIDEBAR_MENU: SideBarProps[] = [
     id: uuid(),
     label: "integrations",
     icon: <RocketDuoToneWhite />,
+  },
+  {
+    id: uuid(),
+    label: "brand voice",
+    icon: <MegaphoneIcon />,
   },
   {
     id: uuid(),

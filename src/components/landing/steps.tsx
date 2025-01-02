@@ -35,11 +35,15 @@ export function Steps() {
         <div className="text-center space-y-4 mb-16">
           <span className="text-sm font-medium text-rose-200">Effortless</span>
           <h2 className="text-4xl font-bold text-white">
-            Streamline Your Instagram Messaging Today
+            Streamline Your Social Media Management Today
           </h2>
           <p className="text-lg text-rose-300 max-w-2xl mx-auto">
-            Setting up our Instagram DM automation tool is a breeze. Follow
-            these simple steps to enhance your engagement effortlessly.
+            Setting up our powerful{" "}
+            <span className="text-rose-400 font-bold">
+              Automation Workflows
+            </span>{" "}
+            is a breeze. Follow these simple steps to enhance your engagement
+            effortlessly.
           </p>
         </div>
 

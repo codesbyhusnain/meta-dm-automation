@@ -1,19 +1,26 @@
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from "@tanstack/react-query";
 import InfoBar from "@/components/global/infobar";
 import Sidebar from "@/components/global/sidebar";
 import React from "react";
-import { query } from "@/lib/react-query";
 import {
   PrefetchUserAutnomations,
   PrefetchUserProfile,
 } from "@/react-query/prefetch";
-import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
+
 type Props = {
   children: React.ReactNode;
   params: { slug: string };
 };
 
 const Layout = async ({ children, params }: Props) => {
+  const query = new QueryClient();
+
   await PrefetchUserProfile(query);
+
   await PrefetchUserAutnomations(query);
 
   return (

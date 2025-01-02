@@ -97,9 +97,9 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="mt-6 text-lg text-rose-200"
             >
-              Slide revolutionizes how you connect with your audience on
-              Instagram. Automate responses and boost engagement effortlessly,
-              turning interactions into valuable business opportunities.
+              DMotion revolutionizes how you connect with your audience.
+              Automate responses and boost engagement effortlessly, turning
+              interactions into valuable business opportunities.
             </motion.p>
 
             <motion.div
@@ -119,7 +119,7 @@ export function Hero() {
                 variant="outline"
                 className="border-transparent"
               >
-                Learn More
+                How It Works
               </Button>
             </motion.div>
           </motion.div>

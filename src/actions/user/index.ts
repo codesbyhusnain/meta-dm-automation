@@ -2,14 +2,13 @@
 
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
-import { createUser, findUser } from "./queries";
+import { createUser, findUser, updateSubscription } from "./queries";
 import { refreshToken } from "@/lib/fetch";
 import { updateIntegration } from "../integrations/queries";
+import { stripe } from "@/lib/stripe";
 
 export const onCurrentUser = async () => {
   const user = await currentUser();
-
-  console.log(user?.primaryEmailAddress);
   if (!user) return redirect("/sign-in");
 
   return user;
@@ -27,8 +26,6 @@ export const onBoardUser = async () => {
 
         const days = Math.round(time_left / (1000 * 3600 * 24));
         if (days < 5) {
-          console.log("refresh");
-
           const refresh = await refreshToken(found.integrations[0].token);
 
           const today = new Date();
@@ -72,6 +69,25 @@ export const onUserInfo = async () => {
     const profile = await findUser(user.id);
     if (profile) return { status: 200, data: profile };
 
+    return { status: 404 };
+  } catch (error) {
+    return { status: 500 };
+  }
+};
+
+export const onSubscribe = async (session_id: string) => {
+  const user = await onCurrentUser();
+  try {
+    const session = await stripe.checkout.sessions.retrieve(session_id);
+    if (session) {
+      const subscribed = await updateSubscription(user.id, {
+        customerId: session.customer as string,
+        plan: "PRO",
+      });
+
+      if (subscribed) return { status: 200 };
+      return { status: 401 };
+    }
     return { status: 404 };
   } catch (error) {
     return { status: 500 };
